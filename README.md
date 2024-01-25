@@ -1,5 +1,4 @@
-# floom
-# a small language for hardware control.
+# floom: a small language for hardware control.
 
 # Why build floom? 
 floom started as a thought experiment. 
