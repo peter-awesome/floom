@@ -1,24 +1,30 @@
-# floom: a small language for hardware control.
+# floom: a small hybrid syntax language for state reasoning.
 
+    SETUP
+    import time
+    VAR
+    var1 = 0
     MAIN
-    [i0:LOW]------{SECOND}
-    [i1:HIGH]---[i2:LOW]---┬-(LIGHT_UP)
-    [i1:LOW]----[i2:HIGH]--┘
-    SECOND
-    [A]----{MAIN}
-    [ai3 < 12]---(LIGHT_DOWN)
-    BRIDGET
-    [i1:HIGH]---[i2:LOW]---┬-(LIGHT_UP)
-    [i1:LOW]----[i2:HIGH]--|
-    [i1:HIGH]---[i2:LOW]---|
-    [i1:LOW]----[i2:HIGH]--┘
+    (print("hello world")) #this is a standard line of floom
+    [var1>=5]{END}
+    (var1 = var1 + 1)
+    (sleep(5))
+    END # this is another label for a loop section - but it is empty - so we exit.
     
-    //TESTS
-    [A] ai3 > 100
+    #corresponding Python code
+    import time
+    var1 = 0
+    def main():
+    	print("hello world")
+    	loop = True
+        while loop==True:
+        	if var1 >= 5:
+        		exit()
+        	var1=var1+1
+        	sleep(5)
     
-    //EFFECTS
-    (LIGHT_UP) ao0 = 1000
-    (LIGHT_DOWN) ao0 = 500
+    if __name__ == "__main__":
+        main()
 
 # Why build floom? 
 floom started as a thought experiment. 
