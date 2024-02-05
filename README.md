@@ -30,3 +30,12 @@
 floom started as a thought experiment. 
 Later, it was implemented for a Zach-Like game experience with a PLC theme.
 Then we realized it could be a fun language for controlling microcontrollers.
+
+# Symbol Definitions
+
+┳ and ┛ (and their mirrored counterparts) denote the start and end of an OR block.
+[condition] represents a conditional expression that evaluates to TRUE or FALSE.
+(action) denotes an action to be taken if the preceding conditions are met.
+
+# OR Block Structure
+An OR block is defined as a segment that evaluates multiple conditions and triggers an action if any of the conditions are TRUE. AND logic is achieved by having several [condition] statements on the same line.
