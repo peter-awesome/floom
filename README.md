@@ -1,5 +1,7 @@
 # Floom: a small hybrid syntax language for state reasoning.
 
+contact us for licensing.
+
     SETUP
     import time
     VAR
