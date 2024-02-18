@@ -1,4 +1,4 @@
-# floom: a small hybrid syntax language for state reasoning.
+# Floom: a small hybrid syntax language for state reasoning.
 
     SETUP
     import time
