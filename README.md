@@ -82,6 +82,12 @@ Commands between a Left Branch Terminator or Continuator are executed until a �
 ```
 In complex OR structures, the evaluation mirrors that of a basic OR, but with multiple branching levels. Floom evaluates each set of conditions within branches. Upon reaching ┗ or ┣, it adheres to the branching logic, continuing conditional evaluations according to the script's flow until encountering a ┛ (Right Branch Terminator) or ┫ (Right Branch Continuator), which guide the return to standard execution flow or continuation within the complex structure.
 
+# PROCEDURE EXECUTION
+'''python
+   [i3==HI] (o1 = LO)
+'''
+In this example, if input 3 is high, then output 1 is set low. The code inside () is executed. In idiomatic Floom, a single assignment (=), sometimes followed by a procedure or function, or a single procedure/function invocation is enclosed in the curly braces. This may or may not be enforced in your particular distribution.
+
 # BLOCK JUMP:
 ```python
     MAIN
