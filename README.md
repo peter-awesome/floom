@@ -65,7 +65,7 @@ Classical boolean constructs are expressed through flow structure in Floom. The 
     [i0==LOW] [i1==HIGH] (doSomething())
 ```
 Logical And is achieved by placing two Boolean Gate expressions in sequence on a single line.
-# OR
+# OR (Branch Gate)
 ```python
     ┳[i1==HI][i2==LO]┳(LIGHT_UP)
     ┗[i1==LO][i2==HI]┛
@@ -73,8 +73,7 @@ Logical And is achieved by placing two Boolean Gate expressions in sequence on a
 In this structure, the ┳ symbol starts an OR condition, activating Conditional Expression Evaluation. Floom evaluates each Boolean condition from left to right. If any condition is FALSE, execution moves down one line from the ┳. The script expects a ┗ (Left Branch Terminator) or ┣ (Left Branch Continuator) next. If absent, execution stops due to an error.
 If all conditions are TRUE, Floom ends the Conditional Expression Evaluation and continues normal execution. The ┗ and ┣ symbols in normal mode advance execution to the next line.
 Commands between a Left Branch Terminator or Continuator are executed until a ┛ (Right Branch Terminator) or ┫ (Right Branch Continuator) is encountered. Execution then continues one line above at the corresponding ┳ position.
-Complex Branch Gate Construction
-# ComplexOR
+# Complex Branch Gate Construction
 ```python
       [i1==LO]┳[i2==LO]┳(LIGHTS_UP)
               ┗[i3==HI]┫
@@ -91,7 +90,7 @@ In complex OR structures, the evaluation mirrors that of a basic OR, but with mu
 In this Floom script, the MAIN loop block continuously checks the state of input 0 (i0). If i0 becomes LOW, the script performs a 'Block Jump' to the loop block labeled SECOND. 
 A 'Block Jump' in Floom, denoted by a label within curly braces {}, directs code execution to the specified label. If the label is not found, an error occurs, stopping the script.
 
-# MATCH
+# MATCH (Right Handed Gate)
 ```python
     ━(i1)┓
           ┣(14-a) {WILLIAM}
