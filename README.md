@@ -43,7 +43,7 @@ Then we realized it could be a fun language for controlling microcontrollers.
         [ai1 < 100] [o2 = HI] (o2 = LO)
 ```
 
-This Floom Script features a loop block labeled MAIN. It repeatedly checks the status of analog input 1 (ai1). If ai1 exceeds 100, the script sets output 2 (o2) to HIGH; if ai1 falls below 100, it sets o2 to LOW. This maintains the ai1 value near 100 by controlling a valve linked to o2, demonstrating a basic control loop.
+This Floom Script features a loop block labeled MAIN. It repeatedly checks the status of analog input 1 (ai1). If ai1 exceeds 100, the script sets output 2 (o2) to HIGH; if ai1 falls below 100, it sets o2 to LOW. This maintains the ai1 value near 100 by controlling a valve linked to o2, demonstrating a basic control loop. This is similar to a Main Loop in Arduino code or a While: True==True construction in other languages.
 
 
 # BOOLEAN GATE:
