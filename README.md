@@ -1,7 +1,7 @@
 # Floom: a small hybrid syntax language for state reasoning.
 
 contact us for licensing.
-
+```python
     SETUP
     import time
     VAR
@@ -27,6 +27,7 @@ contact us for licensing.
     
     if __name__ == "__main__":
         main()
+```
 
 # Why build floom? 
 floom started as a thought experiment. 
