@@ -90,14 +90,21 @@ In complex OR structures, the evaluation mirrors that of a basic OR, but with mu
 In this Floom script, the MAIN loop block continuously checks the state of input 0 (i0). If i0 becomes LOW, the script performs a 'Block Jump' to the loop block labeled SECOND. 
 A 'Block Jump' in Floom, denoted by a label within curly braces {}, directs code execution to the specified label. If the label is not found, an error occurs, stopping the script.
 
-# MATCH (Right Handed Gate)
+# Match Syntax (switch case)
 ```python
-    ━(i1)┓
-          ┣(14-a) {WILLIAM}
-          ┣[14 > x] (LIGHT_UP)
-          ┗┳(8)┳ (LIGHT_DOWN)
-           ┗(9)┛
+    Label
+    ━(matchCase)┓
+     ┣(condition1) {Jump1}
+     ┣(condition2) [BooleanGate2] (action2)
+     ┗┳(condition3)┳ (Action3)
+       ┗(condition4)┛ 
 ```
 
-Although SWITCH or CASE semantics are not strictly necessary in Floom, they were added to simplify situations where the syntax would prove useful. 
+In Floom, we start matching patterns with "━(matchCase)┓". Here, "matchCase" is the starting point or the first thing we check.
+Here's how it works:
+If "condition1" is the same as "matchCase", then "Jump1" happens.
+Next, if "matchCase" fits "condition2", then "BooleanGate2" turns on, leading to "action2".
+If "matchCase" is either "condition3" or "condition4", "Action3" happens. This is like saying "if this or that, then do this."
+The line "━" means we're starting the matching process. It connects the starting point "matchCase" to other checks "┣" or the end "┗". This way, we clearly see what happens step by step, without needing the usual SWITCH or CASE methods.
+
 
