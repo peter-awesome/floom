@@ -1,1 +1,87 @@
+%YAML 1.2
+---
+name: Floom
+file_extensions:
+  - flm
+scope: source.floom
+contexts:
+  main:
+    - include: program
+  program:
+    - match: ''
+      push: line
+  line:
+    # Special OR Logic Operators
+    - match: '[┗┣┳┫┛┓┏━]'
+      scope: keyword.operator.logical.floom
+
+    # Matching Alias Labels before '::' operator followed by braces
+    - match: '\b([A-Z][A-Z0-9_]*)(::)(\(|\[)'
+      captures:
+        '1': string
+        '2': keyword.operator.equality.floom
+        '3': punctuation
+
+    # Matching Comments (Python-like)
+    - match: '#.*'
+      scope: comment.line.floom
+
+    # Labels within any type of braces
+    - match: '(\{|\[|\()([A-Z][a-zA-Z0-9_]*)(\}|\]|\))'
+      captures:
+        '1': punctuation
+        '2': entity.name.function.floom
+        '3': punctuation
+
+    # Entity Names
+    - match: '^(?:[A-Z][a-zA-Z]*)\s*$'
+      scope: entity.name
+
+    # Arithmetic Operators
+    - match: '(\+|\-|\*|\/|%)'
+      scope: keyword.operator.arithmetic.floom
+
+    # Numbers (including those within expressions without spaces)
+    - match: '\b\d+(\.\d+)?\b'
+      scope: constant.numeric.floom
+
+    # Assignment Operator
+    - match: '='
+      scope: keyword.operator.assignment.floom
+
+    # Matched Angle Brackets as Delimiters
+    - match: '<(?![=>])|(?<=[^\s=<])>'
+      scope: keyword.bracket.angle.floom
+
+    # Comparison Operators
+    - match: '(>=|<=|>|<)'
+      scope: keyword.operator.comparison.floom
+
+    # Equality Operators
+    - match: '(==|!=)'
+      scope: keyword.operator.equality.floom
+
+    # Constants
+    - match: '\b(HIGH|LOW|HI|LO)\b'
+      scope: constant.other
+
+    # Brackets
+    - match: '\{|}'
+      scope: punctuation
+    - match: '\[|\]'
+      scope: punctuation
+    - match: '\(|\)'
+      scope: punctuation
+
+    # Variables (alphanumeric, starting with a lower-case letter)
+    - match: '\b[a-z][a-zA-Z0-9_]*\b'
+      scope: string
+
+    # Handling Long Lines
+    - match: '^(.{40,}?)$'
+      captures:
+        '1': 'invalid.illegal.too-long.floom'
+      push:
+        - match: '\n'
+          pop: true
 syntax-file here
