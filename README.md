@@ -100,10 +100,10 @@ A 'Block Jump' in Floom, denoted by a label within curly braces {}, directs code
 ```python
     Label
     ━(matchCase)┓
-     ┣(condition1) {Jump1}
-     ┣(condition2) [BooleanGate2] (action2)
-     ┗┳(condition3)┳ (Action3)
-      ┗(condition4)┛ 
+                ┣(condition1) {Jump1}
+                ┣(condition2) [BooleanGate2] (action2)
+                ┗┳(condition3)┳ (Action3)
+                 ┗(condition4)┛ 
 ```
 
 In Floom, we start matching patterns with "━(matchCase)┓". Here, "matchCase" is the starting point or the first thing we check.
