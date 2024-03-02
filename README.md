@@ -47,10 +47,11 @@ This Floom Script features a loop block labeled MAIN. It repeatedly checks the s
 
 
 # BOOLEAN GATE:
+ ```python   
     x = 4
     [x>2]  (x=2)  #this line will execute - changing the value of x to 2.
     [x<3]  (x=4) # this line will execute - changing the value of x to 4.
-
+```
 
 In Floom, flow control operates through boolean gates, functioning similarly to 'If' statements. Place any boolean expression inside square brackets []. If true, the code following the brackets on the same line executes. For example, initially, x is set to 4. The script then checks if x is greater than 2; if so, x is set to 2. Next, it checks if x is less than 3; if so, x is set to 4. 
 
@@ -60,40 +61,44 @@ Classical boolean constructs are expressed through flow structure in Floom. The 
 
 
 # AND
+```python
     [i0==LOW] [i1==HIGH] (doSomething())
-
+```
 Logical And is achieved by placing two Boolean Gate expressions in sequence on a single line.
 # OR
+```python
     ┳[i1==HI][i2==LO]┳(LIGHT_UP)
     ┗[i1==LO][i2==HI]┛
-
+```
 In this structure, the ┳ symbol starts an OR condition, activating Conditional Expression Evaluation. Floom evaluates each Boolean condition from left to right. If any condition is FALSE, execution moves down one line from the ┳. The script expects a ┗ (Left Branch Terminator) or ┣ (Left Branch Continuator) next. If absent, execution stops due to an error.
 If all conditions are TRUE, Floom ends the Conditional Expression Evaluation and continues normal execution. The ┗ and ┣ symbols in normal mode advance execution to the next line.
 Commands between a Left Branch Terminator or Continuator are executed until a ┛ (Right Branch Terminator) or ┫ (Right Branch Continuator) is encountered. Execution then continues one line above at the corresponding ┳ position.
 Complex Branch Gate Construction
-ComplexOR
+# ComplexOR
+```python
       [i1==LO]┳[i2==LO]┳(LIGHTS_UP)
               ┗[i3==HI]┫
       [i1==HI]┳[i2==HI]┫
               ┗[i3==LO]┛
-
+```
 In complex OR structures, the evaluation mirrors that of a basic OR, but with multiple branching levels. Floom evaluates each set of conditions within branches. Upon reaching ┗ or ┣, it adheres to the branching logic, continuing conditional evaluations according to the script's flow until encountering a ┛ (Right Branch Terminator) or ┫ (Right Branch Continuator), which guide the return to standard execution flow or continuation within the complex structure.
 
 # BLOCK JUMP:
+```python
     MAIN
       [i0==LOW]              {SECOND}
-
+```
 In this Floom script, the MAIN loop block continuously checks the state of input 0 (i0). If i0 becomes LOW, the script performs a 'Block Jump' to the loop block labeled SECOND. 
 A 'Block Jump' in Floom, denoted by a label within curly braces {}, directs code execution to the specified label. If the label is not found, an error occurs, stopping the script.
 
 # MATCH
-
+```python
     ━(i1)┓
           ┣(14-a) {WILLIAM}
           ┣[14 > x] (LIGHT_UP)
           ┗┳(8)┳ (LIGHT_DOWN)
            ┗(9)┛
-
+```
 
 Although SWITCH or CASE semantics are not strictly necessary in Floom, they were added to simplify situations where the syntax would prove useful. 
 
